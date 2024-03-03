@@ -1,0 +1,31 @@
+name: Build
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '>1.4.0'
+      - name: Install Hugo
+        run: |
+          go install github.com/gohugoio/hugo@latest
+      - name: Install Dashing
+        run: |
+          go install github.com/technosophos/dashing@latest
+      - name: Build docset
+        run: |
+          ./build.sh
+      - name: Upload docset
+        uses: actions/upload-artifact@v4
+        with:
+          name: Hanami Docset
+          path: hanami-*.docset

@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# direnv
+.direnv
+.envrc
+
+# Editors
+.nova
+
+# Dashing
+*.docset
+source
