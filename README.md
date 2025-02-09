@@ -24,3 +24,7 @@ open hanami.docset
 ## Action
 
 The workflow reads the version to build the docset for from `version.txt`. The leading `v` has to be omitted.
+
+## References
+
+* [Dashing](https://github.com/technosophos/dashing)
