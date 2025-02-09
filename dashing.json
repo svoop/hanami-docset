@@ -1,23 +1,21 @@
 {
-    "name": "Hanami ${version}",
-    "package": "hanami",
-    "index": "index.html",
-    "selectors": {
-        "h1": {
-            "type": "Guide",
-            "regexp": "[vV]\\d+\\.\\d+:\\s*",
-            "replacement ":"",
-            "matchpath": ".+\\.html"
-        },
-        "h2": {
-            "type": "Section",
-            "matchpath": ".+\\.html"
-        }
+  "name": "Hanami ${version}",
+  "package": "hanami",
+  "index": "index.html",
+  "selectors": {
+    "h1": {
+      "type": "Guide",
+      "regexp": "[vV]\\d+\\.\\d+:\\s*",
+      "replacement ": "",
+      "matchpath": ".+\\.html"
     },
-    "ignore": [
-        "Table of Contents"
-    ],
-    "icon32x32": "icon.png",
-    "allowJS": false,
-    "ExternalURL": "https://guides.hanamirb.org/v${version}/"
+    "h2": {
+      "type": "Section",
+      "matchpath": ".+\\.html"
+    }
+  },
+  "ignore": ["Table of Contents"],
+  "icon32x32": "icon.png",
+  "allowJS": false,
+  "ExternalURL": "https://guides.hanamirb.org/v${version}/"
 }

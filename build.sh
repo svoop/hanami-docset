@@ -14,6 +14,9 @@ git clone https://github.com/hanami/guides.git source
 cd source
 hugo -D
 
+# Remove obsolete files
+find . -name *.xml -exec rm {} \;
+
 # Transform content
 cd public/v${version}
 ../../../transform.rb ${version}

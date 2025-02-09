@@ -3,6 +3,13 @@
 version = ARGV.first
 version_re = Regexp.escape(version)
 
+# Create main page
+main_html = File.read('introduction/getting-started/index.html')
+  .sub(%r{<header[> ].*?</header>}m, "<header>Hanami #{version}</header><h1>🌸 Hanami</h1><hr><br>")
+  .sub(%r{<main[> ].*?</body>}m, '</body>')
+  .gsub(%r{(<a href=")https://guides.hanamirb.org/v2.2/(.*?)"}, '\1\2index.html"')
+
+# Guides and sections
 {
   '**/*.html' => {
     %r{<header[> ].*?</header>}m => ->(*) { "<header>Hanami #{version}</header>" },
@@ -23,3 +30,6 @@ version_re = Regexp.escape(version)
     end
   end
 end
+
+# Write main page
+File.write('index.html', main_html)
