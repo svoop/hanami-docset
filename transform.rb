@@ -12,12 +12,12 @@ main_html = File.read('introduction/getting-started/index.html')
 # Guides and sections
 {
   '**/*.html' => {
-    %r{<header[> ].*?</header>}m => ->(*) { "<header>Hanami #{version}</header>" },
-    %r{<nav[> ].*?</nav>}m => ->(*) { '' },
-    %r{<ul class="section-nav"[> ].*?</ul>}m => ->(*) { '' },
-    %r{>v#{version_re}:\s*}i => ->(*) { '>' },
-    %r{"/v#{version_re}/(.*)"} => ->(*) { %("/../../#{$1}/index.html") },
-    %r{<h1.*?>(.*?)</h1>} => ->(*) { "<h1>#{@prefix} – #{$1}</h1>" }
+    %r{<header[> ].*?</header>}m => proc { "<header>Hanami #{version}</header>" },
+    %r{<nav[> ].*?</nav>}m => proc { '' },
+    %r{<ul class="section-nav"[> ].*?</ul>}m => proc { '' },
+    %r{>v#{version_re}:\s*}i => proc { '>' },
+    %r{"/v#{version_re}/(.*)"} => proc { %("/../../#{$1}/index.html") },
+    %r{<h1.*?>(.*?)</h1>} => proc { "<h1>#{@prefix} – #{$1}</h1>" }
   }
 }.each do |glob, transformations|
   Dir[glob].each do |file|
